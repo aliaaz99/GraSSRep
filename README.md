@@ -18,7 +18,7 @@ We frame this problem as a node classification task within the assembly graph.
 The code is based on Python 3.7 and should run on Unix-like operating systems (MacOS, Linux).
 All necessary dependencies are listed in requirements.txt. You can install them with:
 
-```sh
+```bash
 $ pip install -r requirements.txt
 '''
 
