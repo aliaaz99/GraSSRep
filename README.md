@@ -16,10 +16,11 @@ We frame this problem as a node classification task within the assembly graph.
 ## Installation
 
 The code is based on Python 3.7 and should run on Unix-like operating systems (MacOS, Linux).
+
 All necessary dependencies are listed in requirements.txt. You can install them with:
 
 ```sh
 $ pip install -r requirements.txt
 ```
 
-In addition, you will need wgsim, ABySS, Bowtie2, and Mummer.
+In addition, you will need \href{https://www.ebi.ac.uk/ena/browser/view/SRR606249}{wgsim}, ABySS, Bowtie2, and Mummer.
