@@ -26,9 +26,7 @@ $ pip install -r requirements.txt
 In addition, you will need wgsim, ABySS, Bowtie2, and Mummer.
 
 Commands to run the code for simulated data are in simulated.sh file.
+
 Commands to run the code for shakya_1 data are in shakya_1.sh file.
+
 Commands to run the code for shakya_2 data are in shakya_2.sh file.
-
-ُخ اشرث
-
-
