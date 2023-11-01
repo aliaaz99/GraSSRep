@@ -20,5 +20,6 @@ All necessary dependencies are listed in requirements.txt. You can install them 
 
 ```sh
 $ pip install -r requirements.txt
+'''
 
 In addition, you will need wgsim, ABySS, Bowtie2, and Mummer.
