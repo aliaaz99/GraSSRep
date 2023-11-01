@@ -15,8 +15,7 @@ We frame this problem as a node classification task within the assembly graph.
 
 ## Installation
 
-Provide instructions on how to install your project. Be sure to include any dependencies and specific steps required to get your project up and running.
-
-```bash
-# Example installation command, if applicable
-$ npm install my-project
+The code is based on Python 3.7 and should run on Unix-like operating systems (MacOS, Linux).
+All necessary dependencies are listed in requirements.txt. You can install them with:
+$ pip install -r requirements.txt
+In addition, you will need wgsim, ABySS, Bowtie2, and Mummer.
