@@ -43,7 +43,6 @@ You should have the following directory structure in the project folder:
 
 ```
 ├──Codes.py
-├──Plots
 ├──Results
 ├── Data
 │ ├── simulated_L400_C25
@@ -66,8 +65,17 @@ You need to have three main files provided, for example for shakya_1 dataset:
 │ │ ├── ref_genome.fasta
 ```
 
+2. **Running the Codes:**
 
+Execute the `codes.sh` script to run the setup for each case. Make sure you are in the project root directory and run the following command:
 
+```bash
+bash simulated.sh
+bash shakya_1.sh
+bash shakya_2.sh
+```
+
+This script will process the data files located in the `Data` directory, generate results for each setup specified in the script, and save them in the corresponding folder in the `Results` folder.
 
 
 
