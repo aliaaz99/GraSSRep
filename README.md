@@ -35,4 +35,33 @@ In addition, ensure that you have installed these required packages:
 - **Mummer**: Follow the installation instructions provided in the [mummer repository](https://mummer4.github.io/).
 
 
+## Running the Codes
+
+1. **Folder Structure:**
+
+You should have the following directory structure in the project folder:
+
+├── codes.sh
+├── Data
+│ ├── simulated_data
+│ │ ├── (files for simulated data)
+│ ├── shakya_1
+│ │ ├── (files for shakya data)
+│ ├── (other folders for different cases)
+│ │ ├── (files for other cases)
+
+
+
+
+You need to place your data files in the respective folders inside the `Data` directory.
+
+
+
+
+
+
+
+
+
+
 
