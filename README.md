@@ -19,9 +19,7 @@ The code is based on Python 3.7 and should run on Unix-like operating systems (M
 
 ### Python libraries
 
-Make sure you have the following dependencies installed:
-
-- Python packages listed in `requirements.txt` file. You can install them using the following command:
+Make sure you have the python packages listed in `requirements.txt` installed. You can install them using the following command:
 
 ```sh
 $ pip install -r requirements.txt
@@ -31,10 +29,10 @@ $ pip install -r requirements.txt
 
 In addition, ensure that you have installed these required packages:
 
-- [wgsim](https://github.com/lh3/wgsim): Follow the installation instructions provided in the [wgsim repository](https://github.com/lh3/wgsim).
-- [Abyss](https://github.com/bcgsc/abyss): Follow the installation instructions provided in the [Abyss repository](https://github.com/bcgsc/abyss).
-- [bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml): Follow the installation instructions provided on the [bowtie2 website](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml).
-- [mummer](https://mummer4.github.io/): Follow the installation instructions provided in the [mummer repository](https://mummer4.github.io/).
+- **wgsim**: Follow the installation instructions provided in the [wgsim repository](https://github.com/lh3/wgsim).
+- **Abyss**: Follow the installation instructions provided in the [Abyss repository](https://github.com/bcgsc/abyss).
+- **bowtie2**: Follow the installation instructions provided on the [bowtie2 website](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml).
+- **mummer**: Follow the installation instructions provided in the [mummer repository](https://mummer4.github.io/).
 
 
 
