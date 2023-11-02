@@ -6,12 +6,6 @@ Here we propose a novel approach that leverages the assembly graph’s structure
 learning framework to classify DNA sequences (unitigs) into repetitive and non-repetitive categories.
 We frame this problem as a node classification task within the assembly graph.
 
-## Table of Contents
-- [Installation](##installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
 
 ## Installation
 
