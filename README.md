@@ -54,7 +54,7 @@ You should have the following directory structure in the project folder:
 │ │ ├── (read pairs and reference genome)
 ```
 
-You need to place your data files, including read pairs, in `.fq` format and reference genome in `.fa` format in the respective folders inside the `Data` directory.
+You need to place your data files, including read pairs, in `.fq` format and reference genome in `.fasta` format in the respective folders inside the `Data` directory.
 
 You need to have three main files provided, for example for shakya_1 dataset:
 
