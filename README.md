@@ -7,7 +7,7 @@ learning framework to classify DNA sequences (unitigs) into repetitive and non-r
 We frame this problem as a node classification task within the assembly graph.
 
 ## Table of Contents
-- [Installation](#installation)
+- [Installation](##installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
