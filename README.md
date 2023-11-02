@@ -51,13 +51,15 @@ You should have the following directory structure in the project folder:
 │ │ ├── (files for other cases)
 
 
-
-
 You need to place your data files in the respective folders inside the `Data` directory.
 
 
 
-
+dataset_name
+└── npz_files
+    ├── data_1.npz  # the name is not important
+    ├── ...
+    └── data_n.npz
 
 
 
