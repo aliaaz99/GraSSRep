@@ -29,10 +29,10 @@ $ pip install -r requirements.txt
 
 In addition, ensure that you have installed these required packages:
 
-- **wgsim**: Follow the installation instructions provided in the [wgsim repository](https://github.com/lh3/wgsim).
-- **Abyss**: Follow the installation instructions provided in the [Abyss repository](https://github.com/bcgsc/abyss).
-- **bowtie2**: Follow the installation instructions provided on the [bowtie2 website](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml).
-- **mummer**: Follow the installation instructions provided in the [mummer repository](https://mummer4.github.io/).
+- **Wgsim**: Follow the installation instructions provided in the [wgsim repository](https://github.com/lh3/wgsim).
+- **ABySS**: Follow the installation instructions provided in the [Abyss repository](https://github.com/bcgsc/abyss).
+- **Bowtie2**: Follow the installation instructions provided on the [bowtie2 website](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml).
+- **Mummer**: Follow the installation instructions provided in the [mummer repository](https://mummer4.github.io/).
 
 
 
