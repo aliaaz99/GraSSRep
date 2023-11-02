@@ -41,26 +41,31 @@ In addition, ensure that you have installed these required packages:
 
 You should have the following directory structure in the project folder:
 
-├── codes.sh
+```
+├──Codes.py
+├──Plots
+├──Results
 ├── Data
-│ ├── simulated_data
-│ │ ├── (files for simulated data)
+│ ├── simulated_L400_C25
+│ │ ├── (read pairs and reference genome)
 │ ├── shakya_1
-│ │ ├── (files for shakya data)
+│ │ ├── (read pairs and reference genome)
 │ ├── (other folders for different cases)
-│ │ ├── (files for other cases)
+│ │ ├── (read pairs and reference genome)
+```
 
+You need to place your data files, including read pairs, in `.fq` format and reference genome in `.fa` format in the respective folders inside the `Data` directory.
 
-You need to place your data files in the respective folders inside the `Data` directory.
-
+You need to have three main files provided, for example for shakya_1 dataset:
 
 ```
-dataset_name
-└── npz_files
-    ├── data_1.npz  # the name is not important
-    ├── ...
-    └── data_n.npz
+├── Data
+│ ├── shakya_1
+│ │ ├── outRead1.fq
+│ │ ├── outRead2.fq
+│ │ ├── ref_genome.fasta
 ```
+
 
 
 
