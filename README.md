@@ -61,12 +61,18 @@ You need to have three main files provided, for example for shakya_1 dataset:
 
 2. **Running the Codes:**
 
-Execute the `codes.sh` script to run the setup for each case. Make sure you are in the project root directory and run the following command:
+For any dataset with the read pairs and a reference genome, there are three main steps:
 
-```bash
-bash shakya_code.sh
-bash simulated.sh
-```
+2.1. **Assembly**
+In this step, reads are generated from the reference genome (if we have the data), then the reads are assembled into the unitigs. After that, reads are mapped to the unitigs, and the mapping data is saved. Also, the ground truth for the repeats and non-repeat unitigs is calculated based on the reference genome. All these steps are done in the `sequencing.py` code.
+
+2.2. **Unitig graph construction and feature extraction**
+Using the read mapping information from the previous part, the `unitigGraphFeatures.py` code generates and saves the unitig graph with the node observations for each node on the graph.
+
+2.3. **Repeat detection**
+Finally, using the unitig graph and the features for each node, repeat detection code classifies the unitigs to repeat and non-repeat classes.
+
+Note that the reference genome is just used to calculate the ground truth and evaluate the model. So if in a dataset there is no reference genome the code can be edited to just use the read pairs and find the repetitive unitgis.
 
 This script will process the data files located in the `Data` directory, generate results for each setup specified in the script, and save them in the corresponding folder in the `Results` folder.
 
