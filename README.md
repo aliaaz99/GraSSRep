@@ -39,9 +39,9 @@ You should have the following directory structure in the project folder:
 ├──Codes.py
 ├──Results
 ├── Data
-│ ├── simulated_L400_C25
-│ │ ├── (read pairs and reference genome)
 │ ├── shakya_1
+│ │ ├── (read pairs and reference genome)
+│ ├── shakya_2
 │ │ ├── (read pairs and reference genome)
 │ ├── (other folders for different cases)
 │ │ ├── (read pairs and reference genome)
@@ -52,28 +52,32 @@ You need to place your data files, including read pairs, in `.fq` format and ref
 You need to have three main files provided, for example for shakya_1 dataset:
 
 ```
+...
 ├── Data
 │ ├── shakya_1
 │ │ ├── outRead1.fq
 │ │ ├── outRead2.fq
 │ │ ├── ref_genome.fasta
+...
 ```
+
+For the simulated data, you can run  `repeatDetection.py` to generate the reference genomes for the three different cases discussed in the paper.
+Read pairs will be generated in the nex steps.
 
 2. **Getting the results:**
 
 For any dataset with the read pairs and a reference genome, there are three main steps:
 
   1. **Assembly**
-In this step, reads are generated from the reference genome (if we have the data), then the reads are assembled into the unitigs. After that, reads are mapped to the unitigs, and the mapping data is saved. Also, the ground truth for the repeats and non-repeat unitigs is calculated based on the reference genome. All these steps are done in the `sequencing.py` code.
+In this step, reads are generated from the reference genome (if we have the data), then the reads are assembled into the unitigs. After that, reads are mapped to the unitigs, and the mapping data is saved. Also, the ground truth for the repeats and non-repeat unitigs is calculated based on the reference genome. All these steps are done in the `sequencing.py` code. In this code you can vary the number of reads to control the coverage and and their error.
 
 Note that the reference genome is just used to calculate the ground truth and evaluate the model. So if in a dataset there is no reference genome, the code can be edited to just use the provided read pairs and find the repetitive unitgis. 
 
-  3. **Unitig graph construction and feature extraction**
-Using the read mapping information from the previous part, the `unitigGraphFeatures.py` code generates and saves the unitig graph with the node observations for each node on the graph.
+  2. **Unitig graph construction and feature extraction**
+Using the read mapping information from the previous part, the `unitigGraphFeatures.py` code generates and saves the unitig graph with the node observations for each node on the graph.  In this code, you can change the criteria for the ground truth repeats.
 
-  4. **Repeat detection**
-Finally, using the unitig graph and the features for each node, `repeatDetection.py` code classifies the unitigs to repeat and non-repeat classes.
-
+  3. **Repeat detection**
+Finally, using the unitig graph and the features for each node, `repeatDetection.py` code classifies the unitigs to repeat and non-repeat classes. In this code you can vary the $p$ threshold.
 
 
 This three step process will read the data files located in the `Data` directory, generate results for each setup specified in the script, and save them in the corresponding folder in the `Results` folder.
