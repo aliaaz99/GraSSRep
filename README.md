@@ -26,7 +26,7 @@ In addition, ensure that you have installed these required packages:
 - **Wgsim**: Follow the installation instructions provided in the [wgsim repository](https://github.com/lh3/wgsim).
 - **ABySS**: Follow the installation instructions provided in the [Abyss repository](https://github.com/bcgsc/abyss).
 - **Bowtie2**: Follow the installation instructions provided on the [bowtie2 website](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml).
-- **Mummer**: Follow the installation instructions provided in the [mummer repository](https://mummer4.github.io/).
+- **MUMmer**: Follow the installation instructions provided in the [mummer repository](https://mummer4.github.io/).
 
 
 ## Running the Codes
