@@ -60,7 +60,7 @@ For example for the shakya_1 dataset:
 │ ├── ...
 ```
 
-For simulated data, run `repeatDetection.py` to generate reference genomes for the three different cases discussed in the paper. Read pairs will be generated in the next steps.
+For simulated data, run `genSimData.py` to generate reference genomes for the three different cases discussed in the paper. Read pairs will be generated in the next steps.
 
 2. **Generating the results:**
 
