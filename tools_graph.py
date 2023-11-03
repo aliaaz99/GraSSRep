@@ -243,20 +243,20 @@ def get_hybG(G_repeat, G_adj, Repeat_U_0, Repeat_U_99, isPlot=1, isSave=1, name 
     G_hybrid.remove_edges_from([(u, v) for u, v, d in G_hybrid.edges(data=True) if d['weight'] < thresh_weight])
     print("number of edges after removing edges: ", len(G_hybrid.edges))
 
-    if isPlot:
-        # edge_colors = [("red" if d['label'] == 'repeat' else ("blue" if d['label'] == 'adj' else "black")) for u, v, d in
-        #             G_hybrid.edges(data=True)]
-        pos = nx.spring_layout(G_hybrid)
-        node_colors = ['red' if n in Repeat_U_99 else ('yellow' if n in Repeat_U_0 else 'c') for n in G_hybrid.nodes()]
-        plt.figure(figsize=(8, 8))
-        nx.draw(G_hybrid, pos=pos, node_color=node_colors, node_size=300, width=1, font_size=8)
-        title = "hybrid_graph"
-        plt.title(title)
-        red_patch = mpatches.Patch(color='red', label='inter-genome repeats')
-        blue_patch = mpatches.Patch(color='yellow', label='intra-genome repeats')
-        c_patch = mpatches.Patch(color='c', label='non-repeat')
-        plt.legend(handles=[red_patch, blue_patch, c_patch], loc='upper right', fontsize=17.5)
-        plt.savefig('Plots/' + name + '/' + title + '.png', dpi=300)
+    # if isPlot:
+    #     # edge_colors = [("red" if d['label'] == 'repeat' else ("blue" if d['label'] == 'adj' else "black")) for u, v, d in
+    #     #             G_hybrid.edges(data=True)]
+    #     pos = nx.spring_layout(G_hybrid)
+    #     node_colors = ['red' if n in Repeat_U_99 else ('yellow' if n in Repeat_U_0 else 'c') for n in G_hybrid.nodes()]
+    #     plt.figure(figsize=(8, 8))
+    #     nx.draw(G_hybrid, pos=pos, node_color=node_colors, node_size=300, width=1, font_size=8)
+    #     title = "hybrid_graph"
+    #     plt.title(title)
+    #     red_patch = mpatches.Patch(color='red', label='inter-genome repeats')
+    #     blue_patch = mpatches.Patch(color='yellow', label='intra-genome repeats')
+    #     c_patch = mpatches.Patch(color='c', label='non-repeat')
+    #     plt.legend(handles=[red_patch, blue_patch, c_patch], loc='upper right', fontsize=17.5)
+    #     plt.savefig('Plots/' + name + '/' + title + '.png', dpi=300)
 
     if isSave:
         nx.write_edgelist(G_hybrid, 'Data/' + name + '/adj_matrix.coo', data=False, delimiter=' ')

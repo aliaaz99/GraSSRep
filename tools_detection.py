@@ -2,11 +2,8 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from torch_geometric.nn import SAGEConv
-from sklearn.metrics import confusion_matrix, roc_auc_score, roc_curve, auc, precision_recall_curve, accuracy_score, recall_score, precision_score
+from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score
 from sklearn.ensemble import RandomForestClassifier
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 
     
 class GCN(torch.nn.Module):

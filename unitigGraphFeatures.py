@@ -11,8 +11,6 @@ parser.add_argument('--name', help='Folder containing reads and reference genome
 parser.add_argument('--idy', type=int, help='Identity for repeat detection in %', default=95)
 parser.add_argument('--nL', type=float, help='Normalized length for repeat detection', default=0.95)
 parser.add_argument('--cN', type=int, help='Copy number for repeat detection', default=2)
-parser.add_argument('--isPlot', type=int, help='Plot the graph', default=1)
-parser.add_argument('--isSave', type=int, help='Save the data', default=1)
 args = parser.parse_args()
 
 # name of input files:
@@ -62,7 +60,7 @@ with open('Results/' + args.name + '/readmapping_out.txt', "w") as f:
     start_time = time.time()
     G_repeat = get_repeatG(group_dict1, group_dict2)
     G_adj = get_adjG(group_dict1, group_dict2)
-    G_hybrid= get_hybG(G_repeat, G_adj, intra_Repeats, inter_Repeats, isPlot=True, isSave=True, name=args.name)
+    G_hybrid= get_hybG(G_repeat, G_adj, intra_Repeats, inter_Repeats, isPlot=False, isSave=True, name=args.name)
     end_time = time.time()
     print("Time taken to form and save hybrid graph: ", end_time - start_time)
 
