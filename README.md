@@ -1,10 +1,8 @@
-# Graph-Based Self-Supervised Learning for Repeat Detection in Metagenomic Assembly
+# GraSSRep
 
-This repository contains all necessary code and commands to detect the repeated sequences in a genomic dataset.
+This repository contains all the necessary code and commands for "GraSSRep: Graph-Based Self-Supervised Learning for Repeat Detection in Metagenomic Assembly."
 
-Here we propose a novel approach that leverages the assembly graph’s structure through graph neural networks (GNNs) within a self-supervised
-learning framework to classify DNA sequences (unitigs) into repetitive and non-repetitive categories.
-We frame this problem as a node classification task within the assembly graph.
+We propose GraSSRep, a novel approach that leverages the assembly graph’s structure through graph neural networks (GNNs) within a self-supervised learning framework to classify DNA sequences into repetitive and non-repetitive categories
 
 
 ## Installation
@@ -13,7 +11,7 @@ The code is based on Python 3.7 and should run on Unix-like operating systems (M
 
 ### Python libraries
 
-Make sure you have the python packages listed in `requirements.txt` installed. You can install them using the following command:
+Make sure you have the Python packages listed in `requirements.txt` installed. You can install them using the following command:
 
 ```sh
 $ pip install -r requirements.txt
@@ -36,8 +34,8 @@ In addition, ensure that you have installed these required packages:
 You should have the following directory structure in the project folder:
 
 ```
-├──Codes.py
-├──Results
+├── Codes.py
+├── Results
 ├── Data
 │ ├── shakya_1
 │ │ ├── (read pairs and reference genome)
@@ -49,7 +47,7 @@ You should have the following directory structure in the project folder:
 
 You need to place your data files, including read pairs, in `.fq` format and reference genome in `.fasta` format in the respective folders inside the `Data` directory.
 
-You need to have three main files provided, for example for shakya_1 dataset:
+For example for the shakya_1 dataset:
 
 ```
 ├── Data
@@ -60,31 +58,30 @@ You need to have three main files provided, for example for shakya_1 dataset:
 │ │ ├── outRead2.fq
 │ │ ├── ref_genome.fasta
 │ ├── ...
-
 ```
 
-For the simulated data, you can run  `repeatDetection.py` to generate the reference genomes for the three different cases discussed in the paper.
-Read pairs will be generated in the nex steps.
+For simulated data, run `repeatDetection.py` to generate reference genomes for the three different cases discussed in the paper. Read pairs will be generated in the next steps.
 
-2. **Getting the results:**
+2. **Generating the results:**
 
 For any dataset with the read pairs and a reference genome, there are three main steps:
 
-  1. **Assembly**
-In this step, reads are generated from the reference genome (if we have the data), then the reads are assembled into the unitigs. After that, reads are mapped to the unitigs, and the mapping data is saved. Also, the ground truth for the repeats and non-repeat unitigs is calculated based on the reference genome. All these steps are done in the `sequencing.py` code. In this code you can vary the number of reads to control the coverage and and their error.
+  i) **Assembly**
+In this step, reads are generated from the reference genome (if available), assembled into unitigs, and mapped to the unitigs. Ground truth for repeats and non-repeat unitigs is calculated based on the reference genome.
+All these steps are executed in the `sequencing.py` code.
+You can vary the number of reads to control coverage.
 
-Note that the reference genome is just used to calculate the ground truth and evaluate the model. So if in a dataset there is no reference genome, the code can be edited to just use the provided read pairs and find the repetitive unitgis. 
+Please note that the reference genome is used solely for calculating the ground truth and evaluating the model. If a dataset lacks a reference genome, the code can be modified to utilize the provided read pairs for identifying repetitive unitigs.
 
-  2. **Unitig graph construction and feature extraction**
-Using the read mapping information from the previous part, the `unitigGraphFeatures.py` code generates and saves the unitig graph with the node observations for each node on the graph.  In this code, you can change the criteria for the ground truth repeats.
+  ii) **Unitig graph construction and feature extraction**
+Using read mapping information, the `unitigGraphFeatures.py` code generates and saves the unitig graph with node observations for each node on the graph. Criteria for ground truth repeats can be adjusted in this code.
 
-  3. **Repeat detection**
-Finally, using the unitig graph and the features for each node, `repeatDetection.py` code classifies the unitigs to repeat and non-repeat classes. In this code you can vary the $p$ threshold.
+  iii) **Repeat detection**
+Finally, using the unitig graph and node features, the `repeatDetection.py` code classifies unitigs into repeat and non-repeat classes. The threshold $p$ can be varied in this code.
 
+This three-step process reads data files from the `Data` directory, generates results for each setup specified in the script, and saves them in the corresponding folder within the `Results` directory.
 
-This three step process will read the data files located in the `Data` directory, generate results for each setup specified in the script, and save them in the corresponding folder in the `Results` folder.
-
-The output file `final_pred.csv` have the final results. It has the name of the unitigs, with their index in the unitig graph, along with the true labels and predicted labels.
+The output file `final_pred.csv` contains the unitigs' names, their indices in the unitig graph, along with true labels and predicted labels.
 
 
 
