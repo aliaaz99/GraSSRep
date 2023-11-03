@@ -63,13 +63,13 @@ You need to have three main files provided, for example for shakya_1 dataset:
 
 For any dataset with the read pairs and a reference genome, there are three main steps:
 
-2.1. **Assembly**
+  1. **Assembly**
 In this step, reads are generated from the reference genome (if we have the data), then the reads are assembled into the unitigs. After that, reads are mapped to the unitigs, and the mapping data is saved. Also, the ground truth for the repeats and non-repeat unitigs is calculated based on the reference genome. All these steps are done in the `sequencing.py` code.
 
-2.2. **Unitig graph construction and feature extraction**
+  2. **Unitig graph construction and feature extraction**
 Using the read mapping information from the previous part, the `unitigGraphFeatures.py` code generates and saves the unitig graph with the node observations for each node on the graph.
 
-2.3. **Repeat detection**
+  3. **Repeat detection**
 Finally, using the unitig graph and the features for each node, repeat detection code classifies the unitigs to repeat and non-repeat classes.
 
 Note that the reference genome is just used to calculate the ground truth and evaluate the model. So if in a dataset there is no reference genome the code can be edited to just use the read pairs and find the repetitive unitgis.
