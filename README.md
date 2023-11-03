@@ -59,22 +59,26 @@ You need to have three main files provided, for example for shakya_1 dataset:
 │ │ ├── ref_genome.fasta
 ```
 
-2. **Running the Codes:**
+2. **Getting the results:**
 
 For any dataset with the read pairs and a reference genome, there are three main steps:
 
   1. **Assembly**
 In this step, reads are generated from the reference genome (if we have the data), then the reads are assembled into the unitigs. After that, reads are mapped to the unitigs, and the mapping data is saved. Also, the ground truth for the repeats and non-repeat unitigs is calculated based on the reference genome. All these steps are done in the `sequencing.py` code.
 
-  2. **Unitig graph construction and feature extraction**
+Note that the reference genome is just used to calculate the ground truth and evaluate the model. So if in a dataset there is no reference genome, the code can be edited to just use the provided read pairs and find the repetitive unitgis. 
+
+  3. **Unitig graph construction and feature extraction**
 Using the read mapping information from the previous part, the `unitigGraphFeatures.py` code generates and saves the unitig graph with the node observations for each node on the graph.
 
-  3. **Repeat detection**
-Finally, using the unitig graph and the features for each node, repeat detection code classifies the unitigs to repeat and non-repeat classes.
+  4. **Repeat detection**
+Finally, using the unitig graph and the features for each node, `repeatDetection.py` code classifies the unitigs to repeat and non-repeat classes.
 
-Note that the reference genome is just used to calculate the ground truth and evaluate the model. So if in a dataset there is no reference genome the code can be edited to just use the read pairs and find the repetitive unitgis.
 
-This script will process the data files located in the `Data` directory, generate results for each setup specified in the script, and save them in the corresponding folder in the `Results` folder.
+
+This three step process will read the data files located in the `Data` directory, generate results for each setup specified in the script, and save them in the corresponding folder in the `Results` folder.
+
+The output file `final_pred.csv` have the final results. It has the name of the unitigs, with their index in the unitig graph, along with the true labels and predicted labels.
 
 
 
