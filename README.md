@@ -52,13 +52,15 @@ You need to place your data files, including read pairs, in `.fq` format and ref
 You need to have three main files provided, for example for shakya_1 dataset:
 
 ```
-...
 ├── Data
+│ ├── ...
+│ ├── shakya_2
 │ ├── shakya_1
 │ │ ├── outRead1.fq
 │ │ ├── outRead2.fq
 │ │ ├── ref_genome.fasta
-...
+│ ├── ...
+
 ```
 
 For the simulated data, you can run  `repeatDetection.py` to generate the reference genomes for the three different cases discussed in the paper.
