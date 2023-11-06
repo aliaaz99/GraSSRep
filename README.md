@@ -66,17 +66,20 @@ For simulated data, run `genSimData.py` to generate reference genomes for the th
 
 For any dataset with the read pairs and a reference genome, there are three main steps:
 
-  i) **Assembly**
+  i) **Assembly:**
+  
 In this step, reads are generated from the reference genome (if available), assembled into unitigs, and mapped to the unitigs. Ground truth for repeats and non-repeat unitigs is calculated based on the reference genome.
 All these steps are executed in the `sequencing.py` code.
 You can vary the number of reads to control coverage.
 
 Please note that the reference genome is used solely for calculating the ground truth and evaluating the model. If a dataset lacks a reference genome, the code can be modified to utilize the provided read pairs for identifying repetitive unitigs.
 
-  ii) **Unitig graph construction and feature extraction**
+  ii) **Unitig graph construction and feature extraction:**
+
 Using read mapping information, the `unitigGraphFeatures.py` code generates and saves the unitig graph with node observations for each node on the graph. Criteria for ground truth repeats can be adjusted in this code.
 
-  iii) **Repeat detection**
+  iii) **Repeat detection:**
+
 Finally, using the unitig graph and node features, the `repeatDetection.py` code classifies unitigs into repeat and non-repeat classes. The threshold $p$ can be varied in this code.
 
 This three-step process reads data files from the `Data` directory, generates results for each setup specified in the script, and saves them in the corresponding folder within the `Results` directory.
