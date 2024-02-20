@@ -4,7 +4,7 @@ This repository contains all the necessary code and commands for "GraSSRep: Grap
 
 We propose GraSSRep, a novel approach that leverages the assembly graph’s structure through graph neural networks (GNNs) within a self-supervised learning framework to classify DNA sequences into repetitive and non-repetitive categories. Here is an overview of our method:
 
-![overview](https://github.com/aliaaz99/GraSSRep/assets/136205616/fc94ba5a-ec6a-4b99-90c5-6adf19e3d42c)
+![Overview](https://github.com/aliaaz99/GraSSRep/assets/136205616/43a06c8b-9f53-4359-b47d-b7abf4c5e36b)
 
 
 ## Installation
