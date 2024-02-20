@@ -2,7 +2,7 @@
 
 ########Generate and evaluate simulated data for various L values########
 # Define the values of L
-L_values=(100 200 300 400 500 600 700 800 900 1000)
+L_values=(150 200 300 400 500 600 700 800 900 1000)
 for L in "${L_values[@]}"; do
     echo "Executing Sim_L_$L ..."
 
