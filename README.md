@@ -28,7 +28,7 @@ pip install torch==1.13.1
 pip install torch-geometric==1.7.2
 ```
 
-Finally, make sure you have `Spades` installed. You can follow the installation instructions provided in the [Spades repository] (https://github.com/ablab/spades)
+Finally, make sure you have `Spades` installed. You can follow the installation instructions provided in the [Spades repository](https://github.com/ablab/spades)
 
 
 
