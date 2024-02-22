@@ -11,7 +11,7 @@ We propose GraSSRep, a novel approach that leverages the assembly graph’s stru
 
 The code is based on Python 3.7 and should run on Unix-like operating systems (MacOS, Linux).
 
-Make sure you have the Python packages listed in `requirements.txt` installed. 
+Dependencies for GraSSRep include: 
 
 You can use the `environment.yml` file provided to build a Conda environment with all necessary dependencies. 
 The GraSSRep environment will need to be activated for each usage. 
@@ -21,11 +21,13 @@ conda env create -f environment.yml
 conda activate GraSSRep
 ```
 
-Additionally, you will need to install `torch` and `torch-geometric` using `pip` after creating and activating the environment.
+Additionally, you will need to install `torch`, `torch-geometric`, and `pyfastg` using `pip` after creating and activating the environment.
 
 ```sh
 pip install torch==1.13.1
 pip install torch-geometric==1.7.2
+pip install pyfastg
+pip install biopython
 ```
 
 Finally, make sure you have `Spades` installed. You can follow the installation instructions provided in the [Spades repository](https://github.com/ablab/spades)
