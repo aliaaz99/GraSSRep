@@ -62,7 +62,11 @@ For example, for the shakya_1 dataset:
 │ ├── ...
 ```
 
-For simulated data, run `SimulatedData.sh` to generate reference genomes, read, assemble them, and run the code for the three different cases discussed in the paper.
+For simulated data, you can run `SimulatedData.sh` to simulate reference genomes, generate read-pairs, assemble them, and run the code for the three different cases discussed in the paper.
+```sh
+chmod +x SimulatedData.sh
+./SimulatedData.sh
+```
 
 2. **Generating the results:**
 
