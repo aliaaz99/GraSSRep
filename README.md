@@ -77,20 +77,23 @@ Also,
 All these steps are executed in the `mainGraph.py` code.
 You can vary the following parameters:
 
-## Parameters
+| Parameter          | Description                                                              | Default Value     |
+|--------------------|--------------------------------------------------------------------------|-------------------|
+| `--name`           | Folder containing reads and reference genomes (if available) in Data folder |                   |
+| `--read1`          | Read 1 file name                                                         | "outRead1.fq"    |
+| `--read2`          | Read 2 file name                                                         | "outRead2.fq"    |
+| `--assembly`       | Apply the metaSpades or not                                              | 1                 |
+|                    | (if the assembly graph is generated before, change this to 0)           |                   |
+| `--idy`            | Identity for repeat detection in %                                       | 95                |
+| `--nL`             | Normalized length for repeat detection in %                              | 95                |
+| `--cN`             | Copy number for repeat detection                                         | 2                 |
+| `--isGT`           | Availability of the ground truth (reference genome)                      | 1                 |
+|                    | (if there is no reference genome available, change this to 0)            |                   |
+| `--num_processes`  | Number of processors                                                     | 30                |
 
-- `--name`: Folder containing reads and reference genomes (if available) in Data folder
-- `--read1`: Read 1 file name (default: "outRead1.fq")
-- `--read2`: Read 2 file name (default: "outRead2.fq")
-- `--assembly`: Apply the metaSpades or not (default: 1), if the assembly graph is generated before, change this to 0
-- `--idy`: Identity for repeat detection in % (default: 95)
-- `--nL`: Normalized length for repeat detection in % (default: 95)
-- `--cN`: Copy number for repeat detection (default: 2)
-- `--isGT`: Availability of the ground truth (reference genome) (default: 1), if there is no reference genome available, change this to 0
-- `--num_processes`: Number of processors (default: 30)
 
 
-Please note that the reference genome is used solely for calculating the ground truth and evaluating the model. If a dataset lacks a reference genome, the code can be modified to utilize the provided read pairs for identifying repetitive unitigs.
+Please note that the reference genome is used solely for finding the ground truth contigs and evaluating the model. If a dataset lacks a reference genome, the code can be modified to utilize the provided read pairs for identifying repetitive contigs.
 
   ii) **Repeat detection:**
 
