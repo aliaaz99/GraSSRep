@@ -7,26 +7,29 @@ We propose GraSSRep, a novel approach that leverages the assembly graph’s stru
 ![Overview](https://github.com/aliaaz99/GraSSRep/assets/136205616/43a06c8b-9f53-4359-b47d-b7abf4c5e36b)
 
 
-## Installation
+## Installation & Dependencies
 
 The code is based on Python 3.7 and should run on Unix-like operating systems (MacOS, Linux).
 
-### Python libraries
+Make sure you have the Python packages listed in `requirements.txt` installed. 
 
-Make sure you have the Python packages listed in `requirements.txt` installed. You can install them using the following command:
+You can use the `environment.yml` file provided to build a Conda environment with all necessary dependencies. 
+The GraSSRep environment will need to be activated for each usage. 
 
 ```sh
-$ pip install -r requirements.txt
+conda env create -f environment.yml
+conda activate GraSSRep
 ```
 
-### Packages:
+Additionally, you will need to install `torch` and `torch-geometric` using `pip` after creating and activating the environment.
 
-In addition, ensure that you have installed these required packages:
+```sh
+pip install torch==1.13.1
+pip install torch-geometric==1.7.2
+```
 
-- **Wgsim**: Follow the installation instructions provided in the [wgsim repository](https://github.com/lh3/wgsim).
-- **ABySS**: Follow the installation instructions provided in the [Abyss repository](https://github.com/bcgsc/abyss).
-- **Bowtie2**: Follow the installation instructions provided on the [bowtie2 website](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml).
-- **{MUM}mer**: Follow the installation instructions provided in the [mummer repository](https://mummer4.github.io/).
+Finally, make sure you have `Spades` installed. You can follow the installation instructions provided in the [Spades repository] (https://github.com/ablab/spades)
+
 
 
 ## Running the Codes
