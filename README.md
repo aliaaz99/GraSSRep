@@ -2,7 +2,7 @@
 
 This repository contains all the necessary code and commands for "GraSSRep: Graph-Based Self-Supervised Learning for Repeat Detection in Metagenomic Assembly."
 
-We propose GraSSRep, a novel approach that leverages the assembly graph’s structure through graph neural networks (GNNs) within a self-supervised learning framework to classify DNA sequences into repetitive and non-repetitive categories. Here is an overview of our method:
+We propose GraSSRep, a novel approach that leverages the assembly graph’s structure through graph neural networks (GNNs) within a self-supervised learning framework to classify DNA sequences (contigs) into repetitive and non-repetitive categories. Here is an overview of our method:
 
 ![Overview](https://github.com/aliaaz99/GraSSRep/assets/136205616/43a06c8b-9f53-4359-b47d-b7abf4c5e36b)
 
