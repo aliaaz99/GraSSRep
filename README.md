@@ -21,13 +21,10 @@ conda env create -f environment.yml
 conda activate GraSSRep
 ```
 
-Additionally, you will need to install `torch`, `torch-geometric`, and `pyfastg` using `pip` after creating and activating the environment.
+Additionally, you will need to install other packages using `pip` after creating and activating the environment.
 
 ```sh
-pip install torch==1.13.1
-pip install torch-geometric==1.7.2
-pip install pyfastg
-pip install biopython
+pip install -r requirements. txt
 ```
 
 Finally, make sure you have `Spades` installed. You can follow the installation instructions provided in the [Spades repository](https://github.com/ablab/spades)
