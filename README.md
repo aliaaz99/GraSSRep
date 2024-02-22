@@ -83,7 +83,7 @@ You can vary the following parameters:
 | `--read1`          | Read 1 file name                                                         | "outRead1.fq"    |
 | `--read2`          | Read 2 file name                                                         | "outRead2.fq"    |
 | `--assembly`       | Apply the metaSpades or not                                              | 1                 |
-|                    | (if the assembly graph is generated before, change this to 0)           |                   |
+|                     (if the assembly graph is generated before, change this to 0)                              |
 | `--idy`            | Identity for repeat detection in %                                       | 95                |
 | `--nL`             | Normalized length for repeat detection in %                              | 95                |
 | `--cN`             | Copy number for repeat detection                                         | 2                 |
