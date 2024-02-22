@@ -104,7 +104,7 @@ Finally, using the assembly graph structure and node features, the `mainRepeatDe
 | `--name`             | "shakya_1"    | Folder containing reads and reference genomes (if available) in Data folder |
 | `--p`                | 35            | p threshold to generate pseudo-labels and apply fine-tuning              |
 | `--N_iter`           | 10            | Number of iterations to repeat the results and average it                |
-| `--isSemiSupervised`| 0             | Flag to use semi-supervised learning instead of self-supervised learning |
+| `--isSemiSupervised` | 0             | Flag to use semi-supervised learning instead of self-supervised |
 | `--noGNN`            | 0             | Flag to exclude GNN step or not                                          |
 | `--noRF`             | 0             | Flag to exclude RF step or not                                           |
 
