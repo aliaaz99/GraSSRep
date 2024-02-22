@@ -22,7 +22,7 @@ conda activate GraSSRep
 Additionally, you will need to install other packages using `pip` after creating and activating the environment.
 
 ```sh
-pip install -r requirements. txt
+pip install -r requirements.txt
 ```
 
 Finally, make sure you have `Spades` and `MUMmer` installed. You can follow the installation instructions provided in the [Spades](https://github.com/ablab/spades) and [MUMmer](https://mummer.sourceforge.net/) repository.
