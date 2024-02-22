@@ -77,20 +77,19 @@ Also,
 All these steps are executed in the `mainGraph.py` code.
 You can vary the following parameters:
 
-| Parameter          | Description                                                              | Default Value     |
-|--------------------|--------------------------------------------------------------------------|-------------------|
-| `--name`           | Folder containing reads and reference genomes (if available) in Data folder |                   |
-| `--read1`          | Read 1 file name                                                         | "outRead1.fq"    |
-| `--read2`          | Read 2 file name                                                         | "outRead2.fq"    |
-| `--assembly`       | Apply the metaSpades or not                                              | 1                 |
-|                     (if the assembly graph is generated before, change this to 0)                              |
-| `--idy`            | Identity for repeat detection in %                                       | 95                |
-| `--nL`             | Normalized length for repeat detection in %                              | 95                |
-| `--cN`             | Copy number for repeat detection                                         | 2                 |
-| `--isGT`           | Availability of the ground truth (reference genome)                      | 1                 |
-|                    | (if there is no reference genome available, change this to 0)            |                   |
-| `--num_processes`  | Number of processors                                                     | 30                |
-
+| Parameter          | Default Value     | Description                                                              |
+|--------------------|-------------------|--------------------------------------------------------------------------|
+| `--name`           | "shakya_1"     | Folder containing reads and reference genomes (if available) in Data folder |
+| `--read1`          | "outRead1.fq"     | Read 1 file name                                                         |
+| `--read2`          | "outRead2.fq"     | Read 2 file name                                                         |
+| `--assembly`       | 1                 | Apply the metaSpades or not                                              |
+|                    |                | (if the assembly graph or spades is generated before, change this to 0)           |
+| `--idy`            | 95                | Identity for repeat detection in %                                       |
+| `--nL`             | 95                | Normalized length for repeat detection in %                              |
+| `--cN`             | 2                 | Copy number for repeat detection                                         |
+| `--isGT`           | 1                 | Availability of the ground truth (reference genome)                      |
+|                    |                   | (if there is no reference genome available, change this to 0)            |
+| `--num_processes`  | 30                | Number of processors                                                     |
 
 
 Please note that the reference genome is used solely for finding the ground truth contigs and evaluating the model. If a dataset lacks a reference genome, the code can be modified to utilize the provided read pairs for identifying repetitive contigs.
