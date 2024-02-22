@@ -27,7 +27,7 @@ Additionally, you will need to install other packages using `pip` after creating
 pip install -r requirements. txt
 ```
 
-Finally, make sure you have `Spades` installed. You can follow the installation instructions provided in the [Spades repository](https://github.com/ablab/spades)
+Finally, make sure you have `Spades` and `MUMmer` installed. You can follow the installation instructions provided in the [Spades](https://github.com/ablab/spades) and [MUMmer](https://mummer.sourceforge.net/) repository.
 
 
 
@@ -51,7 +51,7 @@ You should have the following directory structure in the project folder:
 
 You need to place your data files, including read pairs, in `.fq` format and reference genome in `.fasta` format in the respective folders inside the `Data` directory.
 
-For example for the shakya_1 dataset:
+For example, for the shakya_1 dataset:
 
 ```
 ├── Data
@@ -64,25 +64,35 @@ For example for the shakya_1 dataset:
 │ ├── ...
 ```
 
-For simulated data, run `genSimData.py` to generate reference genomes for the three different cases discussed in the paper. Read pairs will be generated in the next steps.
+For simulated data, run `SimulatedData.sh` to generate reference genomes, read, assemble them, and run the code for the three different cases discussed in the paper.
 
 2. **Generating the results:**
 
-For any dataset with the read pairs and a reference genome, there are three main steps:
+For any dataset with the read pairs and a reference genome, there are two main steps:
 
   i) **Assembly:**
   
-In this step, reads are generated from the reference genome (if available), assembled into unitigs, and mapped to the unitigs. Ground truth for repeats and non-repeat unitigs is calculated based on the reference genome.
-All these steps are executed in the `sequencing.py` code.
-You can vary the number of reads to control coverage.
+In this step, reads are assembled into contigs, and then the assembly graph is provided by `spades`. Note that if the reference genome is available, reads are generated from the reference genome using `wgsim `. Ground truth labels for repeats and non-repeat contigs are also found based on the reference genome using `Nucmer`.
+Also, 
+All these steps are executed in the `mainGraph.py` code.
+You can vary the following parameters:
+
+## Parameters
+
+- `--name`: Folder containing reads and reference genomes (if available) in Data folder
+- `--read1`: Read 1 file name (default: "outRead1.fq")
+- `--read2`: Read 2 file name (default: "outRead2.fq")
+- `--assembly`: Apply the metaSpades or not (default: 1), if the assembly graph is generated before, change this to 0
+- `--idy`: Identity for repeat detection in % (default: 95)
+- `--nL`: Normalized length for repeat detection in % (default: 95)
+- `--cN`: Copy number for repeat detection (default: 2)
+- `--isGT`: Availability of the ground truth (reference genome) (default: 1), if there is no reference genome available, change this to 0
+- `--num_processes`: Number of processors (default: 30)
+
 
 Please note that the reference genome is used solely for calculating the ground truth and evaluating the model. If a dataset lacks a reference genome, the code can be modified to utilize the provided read pairs for identifying repetitive unitigs.
 
-  ii) **Unitig graph construction and feature extraction:**
-
-Using read mapping information, the `unitigGraphFeatures.py` code generates and saves the unitig graph with node observations for each node on the graph. Criteria for ground truth repeats can be adjusted in this code.
-
-  iii) **Repeat detection:**
+  ii) **Repeat detection:**
 
 Finally, using the unitig graph and node features, the `repeatDetection.py` code classifies unitigs into repeat and non-repeat classes. The threshold $p$ can be varied in this code.
 
