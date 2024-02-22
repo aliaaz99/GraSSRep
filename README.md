@@ -11,9 +11,7 @@ We propose GraSSRep, a novel approach that leverages the assembly graph’s stru
 
 The code is based on Python 3.7 and should run on Unix-like operating systems (MacOS, Linux).
 
-Dependencies for GraSSRep include: 
-
-You can use the `environment.yml` file provided to build a Conda environment with all necessary dependencies. 
+To install the dependencies for GraSSRep, you can use the `environment.yml` file provided to build a Conda environment with all necessary dependencies. 
 The GraSSRep environment will need to be activated for each usage. 
 
 ```sh
@@ -95,7 +93,17 @@ Please note that the reference genome is used solely for finding the ground trut
 
   ii) **Repeat detection:**
 
-Finally, using the unitig graph and node features, the `repeatDetection.py` code classifies unitigs into repeat and non-repeat classes. The threshold $p$ can be varied in this code.
+Finally, using the assembly graph structure and node features, the `mainRepeatDetection.py` code classifies contigs into repeat and non-repeat classes using GNN and in a self-supervised manner and finally applies a fine tuning step. This includes Steps 3, 4, and 5 in the overview figure. Parameters that you can vary for this code are:
+
+| Parameter            | Default Value | Description                                                              |
+|----------------------|---------------|--------------------------------------------------------------------------|
+| `--name`             | "shakya_1"    | Folder containing reads and reference genomes (if available) in Data folder |
+| `--p`                | 35            | p threshold to generate pseudo-labels and apply fine-tuning              |
+| `--N_iter`           | 10            | Number of iterations to repeat the results and average it                |
+| `--isSemiSupervised`| 0             | Flag to use semi-supervised learning instead of self-supervised learning |
+| `--noGNN`            | 0             | Flag to exclude GNN step or not                                          |
+| `--noRF`             | 0             | Flag to exclude RF step or not                                           |
+
 
 This three-step process reads data files from the `Data` directory, generates results for each setup specified in the script, and saves them in the corresponding folder within the `Results` directory.
 
