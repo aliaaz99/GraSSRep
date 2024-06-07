@@ -1,7 +1,7 @@
 #!/bin/bash
 num_iter=10
-
-########Generate and evaluate simulated data for various Repeat Length values########
+########Generate and evaluate simulated data for various L values########
+# Define the values of L
 L_values=(150 200 300 400 500 600 700 800 900 1000)
 for L in "${L_values[@]}"; do
     echo "Executing Sim_L_$L..."
@@ -58,6 +58,7 @@ for C in "${C_values[@]}"; do
 done
 
 ########Generate and evaluate simulated data for various coverage values########
+
 L_value=400
 C_value=20
 coverage_values=(5 10 15 20 25 30 35 40 45 50)
@@ -88,4 +89,3 @@ for cov in "${coverage_values[@]}"; do
     done
     echo ""
 done
-
