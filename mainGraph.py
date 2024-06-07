@@ -41,10 +41,8 @@ with open('Results/' + args.name + '/readmapping_out.txt', "w") as f:
     sys.stdout = f
 
     start_time = time.time()
-    """Assemble the reads:"""
-    if args.assembly == 1:
-        metaSpades_assembly(args.name, args.read1, args.read2, args.isGT, args.num_processes)
-
+    """Assemble the reads and map contigs to the reference genomes:"""
+    metaSpades_assembly(args.name, read1, read2, args.assembly, args.isGT, args.num_processes)
     end_time = time.time()
     print("Time taken to assemble the contigs: ", end_time - start_time)
 
