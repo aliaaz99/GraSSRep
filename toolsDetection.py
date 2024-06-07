@@ -8,28 +8,39 @@ from torch_geometric.loader import NodeLoader
 
     
 class GCN(torch.nn.Module):
-    def __init__(self, in_channels, hidden_channels, embSize, num_classes):
+    def __init__(self, in_channels, hidden_channels, num_classes):
         super(GCN, self).__init__()
-        self.conv1 = SAGEConv(in_channels, hidden_channels)
-        self.bn1 = torch.nn.BatchNorm1d(hidden_channels)
-        self.conv2 = SAGEConv(hidden_channels, embSize)
-        self.bn2 = torch.nn.BatchNorm1d(embSize)
-        self.fc = torch.nn.Linear(embSize, num_classes)
+        
+        self.layers = torch.nn.ModuleList()
+        self.batch_norms = torch.nn.ModuleList()
+        
+        # First layer
+        self.layers.append(SAGEConv(in_channels, hidden_channels[0]))
+        self.batch_norms.append(torch.nn.BatchNorm1d(hidden_channels[0]))
+        
+        # Hidden layers
+        for i in range(1, len(hidden_channels)):
+            self.layers.append(SAGEConv(hidden_channels[i-1], hidden_channels[i]))
+            self.batch_norms.append(torch.nn.BatchNorm1d(hidden_channels[i]))
+        
+        # Final fully connected layer
+        self.fc = torch.nn.Linear(hidden_channels[-1], num_classes)
         
     def forward(self, x, edge_index):
-        x0 = self.conv1(x, edge_index)
-        x0 = self.bn1(x0)
-        x0 = F.relu(x0)
+        
+        for conv, bn in zip(self.layers, self.batch_norms):
+            x = conv(x, edge_index)
+            x = bn(x)
+            x = F.relu(x)
+        
+        # Output before the fully connected layer
+        x_pre_fc = x
+        
+        # Apply the fully connected layer
+        x_post_fc = self.fc(x_pre_fc)
+        x_post_fc = F.softmax(x_post_fc, dim=1)
 
-        x0 = self.conv2(x0, edge_index)
-        x0 = self.bn2(x0)
-        x0 = F.relu(x0)
-
-        x1 = self.fc(x0)
-
-        x1 = F.softmax(x1, dim=1)
-
-        return x0, x1
+        return x_pre_fc, x_post_fc
     
 def get_yinitial(X, y_real, len_thresh, coverage_thresh, isRandom=0):
     flags_ones = np.zeros(X.shape[0])
