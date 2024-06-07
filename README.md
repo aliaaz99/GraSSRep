@@ -104,7 +104,8 @@ Finally, using the assembly graph structure and node features, the `mainRepeatDe
 | `--name`             | "shakya_1"    | Folder containing reads and reference genomes (if available) in Data folder |
 | `--p`                | 35            | p threshold to generate pseudo-labels and apply fine-tuning              |
 | `--N_iter`           | 10            | Number of iterations to repeat the results and average it                |
-| `--isSemiSupervised` | 0             | Flag to use semi-supervised learning instead of self-supervised |
+| `--gnn_dim_hidden`   | "16,16"       | Hidden units per layer for GNN, comma seperated                          |
+| `--isSemiSupervised` | 0             | Flag to use semi-supervised learning instead of self-supervised          |
 | `--noGNN`            | 0             | Flag to exclude GNN step or not                                          |
 | `--noRF`             | 0             | Flag to exclude RF step or not                                           |
 
@@ -160,7 +161,9 @@ python mainGraph.py --name Example --read1 outRead1.fq --read2 outRead2.fq --ass
 The `mainRepeatDetection.py` script uses the assembly graph structure and node features to classify contigs into repeat and non-repeat categories. 
 
 ```sh
-python mainRepeatDetection.py --p 50 --name "Example" --N_iter 5 > "Results/Example/repeatDetection.log"
+python mainRepeatDetection.py --p 50 --name "Example" --N_iter 5 --gnn_dim_hidden 16,16 > "Results/Example/repeatDetection.log"
 ```
 
 The `--p` parameter specifies the threshold for generating pseudo-labels and applying fine-tuning. The log file for this step is saved in the results directory.
+
+In addition to the repeat detection results, other files containing information on the contigs are stored as explained previously in the Output Files section.
