@@ -127,5 +127,3 @@ with open(os.path.join(args.name, "ref_genome.fasta"), "w+") as wf:
 
         wf.write(">ref_genome_" + str(i) + "\n")
         wf.write(inserted_genome_i + "\n")
-
-
