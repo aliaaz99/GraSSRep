@@ -13,8 +13,9 @@ import pandas as pd
 parser = ap.ArgumentParser()
 parser.add_argument('--name', help='Folder containing reads and reference genomes (if available) in Data folder', default="shakya_1")
 parser.add_argument('--p', type=int, help='p threshold to generate pseudo-labels', default=35)
-parser.add_argument('--N_iter', type=int, help='Number of iteration', default=10)
+parser.add_argument('--N_iter', type=int, help='Number of iteration', default=5)
 parser.add_argument('--isSemiSupervised', type=int, help='Flag to use semi-supervised learning instead of self-supervised learning', default=0)
+parser.add_argument('--gnn_dim_hidden', type=str, help='hidden units per layer for GNN', default="16,16") 
 parser.add_argument('--noGNN', type=int, help='Flag to exclude GNN step or not', default=0)
 parser.add_argument('--noRF', type=int, help='Flag to exclude RF step or not', default=0)
 args = parser.parse_args()
@@ -23,8 +24,7 @@ args = parser.parse_args()
 name = args.name
 N_tree = 100
 thresholds = args.p
-hidden_channel = 16
-embSize = 8
+d_hidden = [int(x) for x in args.gnn_dim_hidden.split(',')]
 N_epoch_GNN = 2001
 gnnLr = 0.001
 
@@ -78,8 +78,7 @@ print("Testing threshold: ", args.p)
 print("N_epoch_GNN:", N_epoch_GNN)
 print("N_tree:", N_tree)
 print("isSemiSupervised:", args.isSemiSupervised)
-print("hidden_channel:", hidden_channel)
-print("embSize:", embSize)
+print("GNN layers:", d_hidden)
 print("gnnLr:", gnnLr)
 print("")
 
@@ -123,7 +122,7 @@ for iter in range(args.N_iter):
     data_main.train_mask = train_mask
 
 
-    model_GNN = GCN(in_channels=num_features, hidden_channels= hidden_channel, embSize=embSize, num_classes=2)
+    model_GNN = GCN(in_channels=num_features, hidden_channels= d_hidden, num_classes=2)
     X, y_true, y_pred_gnn, y_initial, confusion_matrix_gnn_iter, emb_all = embLearn(data_main, model_GNN, N_epoch_GNN, gnnLr, args.noGNN) 
     # performance of y_pred_gnn based on y_true
     conf_gnn = confusion_matrix(y_true, y_pred_gnn)
@@ -261,7 +260,7 @@ print("F1:",  np.mean(np.array(Test_f1_gnn))  * 100)
 print("Confusion Matrix: \n",  np.mean(np.array(conf_matrixes_gnn), axis=0))
 
 print("")
-print("Performance of RF:")
+print("Performance of RF (before fine tuning):")
 print("Accuracy:", np.mean(np.array(Test_Acc_rf))  * 100)
 print("Sensitivity:",  np.mean(np.array(Test_Sen_rf))  * 100)
 print("Precision:",  np.mean(np.array(Test_Pre_rf))  * 100)
