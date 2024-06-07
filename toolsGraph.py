@@ -10,26 +10,22 @@ import itertools
 from multiprocessing import Pool
 
 
-def metaSpades_assembly(folder_name, read1, read2, isGT, num_processes):
-    read1_path = 'Data/' + folder_name + '/' + read1
-    read2_path = 'Data/' + folder_name + '/' + read2
+def metaSpades_assembly(folder_name, read1, read2, isAssembly, isGT, num_processes):
     genome_name = 'Data/' + folder_name + '/ref_genome.fasta'
     spades_out = 'Data/' + folder_name  + '/assemblies'
     myUnitig = spades_out + '/before_rr.fasta'
     nucmer_name = spades_out + '/contig_mapping'
     nucmer_repeat = nucmer_name + '.coords'
+    k = 55
     
-    # run spades:
-    spades_cmd = ['spades.py' + ' -1 ' + read1_path + ' -2 ' + read2_path + ' -o ' + spades_out + ' -t ' + str(num_processes) + ' --meta' + ' --only-assembler' + ' --disable-rr']
-    with open('Data/' + folder_name + '/spades_terminal_file.txt', "w") as outfile:
-        p_spades = subprocess.run(spades_cmd, shell=True, stdout=outfile, stderr=outfile)
+    if isAssembly:
+        spades_cmd = ['spades.py' + ' -1 ' + read1 + ' -2 ' + read2 + ' -o ' + spades_out + ' -t ' + str(num_processes) + ' --meta' + ' --disable-rr ' + ' -m 70']
+        with open('Data/' + folder_name + '/spades_terminal_file.txt', "w") as outfile:
+            p_spades = subprocess.run(spades_cmd, shell=True, stdout=outfile, stderr=outfile)
 
-    # run nucmer:
-    k = 55 # largest k-mer in metaspades default k-mer values
-    command_nucmer_1 = ['nucmer' + ' --maxmatch' + ' --nosimplify' + ' -l ' + str(int(k)-1) + ' -c ' + str(int(k)-1) + ' --prefix=' + nucmer_name + ' ' + genome_name + ' ' + myUnitig]
-    command_nucmer_2 = ['show-coords' + ' -r ' + nucmer_name + '.delta' + ' > ' + nucmer_repeat]
-    
     if isGT:
+        command_nucmer_1 = ['nucmer' + ' --maxmatch' + ' --nosimplify' + ' -l ' + str(int(k)-1) + ' -c ' + str(int(k)-1) + ' --prefix=' + nucmer_name + ' ' + genome_name + ' ' + myUnitig]
+        command_nucmer_2 = ['show-coords' + ' -r ' + nucmer_name + '.delta' + ' > ' + nucmer_repeat]
         with open('Data/' + folder_name + '/nucmer_terminal_file1.txt', "w") as outfile:
             p_nucmer1 = subprocess.run(command_nucmer_1, shell=True, stdout=outfile, stderr=outfile)
 
@@ -37,6 +33,8 @@ def metaSpades_assembly(folder_name, read1, read2, isGT, num_processes):
             p_nucmer2 = subprocess.run(command_nucmer_2, shell=True, stdout=outfile, stderr=outfile)  
 
     print("Assembly done")
+
+
 
 def get_repeats(coords_file_name, myIDY=100, myL=100, myCN=2):
     dfR = pd.read_csv(coords_file_name, skiprows=5, delimiter=' ', header=None, skipinitialspace=True)
