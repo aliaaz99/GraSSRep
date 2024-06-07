@@ -84,11 +84,11 @@ You can vary the following parameters:
 | `--read1`          | "outRead1.fq"     | Read 1 file name                                                         |
 | `--read2`          | "outRead2.fq"     | Read 2 file name                                                         |
 | `--assembly`       | 1                 | Flag to run the metaSpades or not                                              |
-|                    |                | (if the assembly graph or spades is generated before, change this to 0)           |
-| `--idy`            | 95                | Identity for repeat detection in %                                       |
-| `--nL`             | 95                | Normalized length for repeat detection in %                              |
-| `--cN`             | 2                 | Copy number for repeat detection                                         |
-| `--isGT`           | 1                 | Flaf for the availability of the ground truth (reference genome)                      |
+|                    |                | (if the assembly graph is generated before, change this to 0)           |
+| `--idy`            | 95                | Identity for ground truth repeat detection in %                                       |
+| `--nL`             | 95                | Normalized length for ground truth repeat detection in %                              |
+| `--cN`             | 2                 | Copy number for ground truth repeat detection                                         |
+| `--isGT`           | 1                 | Flaf for the availability of the reference genome                     |
 |                    |                   | (if there is no reference genome available, change this to 0)            |
 | `--num_processes`  | 30                | Number of processors                                                     |
 
