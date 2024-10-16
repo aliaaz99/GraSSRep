@@ -170,6 +170,9 @@ In addition to the repeat detection results, other files containing information 
 
 # Citation
 
+If you use GraSSRep in your research, please cite the following paper:
+
+```bibtex
 @article{azizpour2024graph,
   title={Graph-based self-supervised learning for repeat detection in metagenomic assembly},
   author={Azizpour, Ali and Balaji, Advait and Treangen, Todd J and Segarra, Santiago},
@@ -180,3 +183,4 @@ In addition to the repeat detection results, other files containing information 
   year={2024},
   publisher={Cold Spring Harbor Lab}
 }
+
