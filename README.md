@@ -167,3 +167,16 @@ python mainRepeatDetection.py --p 50 --name "Example" --N_iter 5 --gnn_dim_hidde
 The `--p` parameter specifies the threshold for generating pseudo-labels and applying fine-tuning. The log file for this step is saved in the results directory.
 
 In addition to the repeat detection results, other files containing information on the contigs are stored as explained previously in the Output Files section.
+
+# Citation
+
+@article{azizpour2024graph,
+  title={Graph-based self-supervised learning for repeat detection in metagenomic assembly},
+  author={Azizpour, Ali and Balaji, Advait and Treangen, Todd J and Segarra, Santiago},
+  journal={Genome research},
+  volume={34},
+  number={9},
+  pages={1468--1476},
+  year={2024},
+  publisher={Cold Spring Harbor Lab}
+}
